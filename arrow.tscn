@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://djm5gkd20aed2"]
+
+[ext_resource type="Script" path="res://arrow.gd" id="1_er1lg"]
+[ext_resource type="Texture2D" uid="uid://bqsvyar4ceudg" path="res://texture_atlas.tres" id="2_007hv"]
+
+[node name="Arrow" type="Control"]
+custom_minimum_size = Vector2(42, 58)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 42.0
+offset_bottom = 58.0
+rotation = -1.02102
+script = ExtResource("1_er1lg")
+
+[node name="ArrowUp" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(58, 42)
+layout_mode = 1
+offset_top = 58.0
+offset_right = 58.0
+offset_bottom = 100.0
+rotation = -1.5708
+texture = ExtResource("2_007hv")
