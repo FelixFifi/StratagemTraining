@@ -39,3 +39,6 @@ func get_direction():
 
 func mark_done():
 	texture = load(TEXTURE_MAPPING["done"][arrow_direction])
+
+func reset():
+	texture = load(TEXTURE_MAPPING["todo"][arrow_direction])

@@ -13,6 +13,7 @@ var arrows_done : Array[Arrow]= []
 @onready var code = %Code
 var arrow_scene = load("res://arrow.tscn")
 
+var inputs_this_frame = 0
 
 
 func _ready():
@@ -32,12 +33,21 @@ func cleanup_arrows():
 		arrow.queue_free()
 	arrows_done.clear()
 
+func reset_arrows():
+	for arrow in arrows_done:
+		arrow.reset()
+		arrows.push_front(arrow)
+
+	arrows_done.clear()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if len(arrows) == 0:
 		cleanup_arrows()
 		generate_arrows(10)
+
+	inputs_this_frame = 0
 
 
 func _unhandled_key_input(event):
@@ -46,8 +56,21 @@ func _unhandled_key_input(event):
 
 		var required_input = DIRECTION_ACTION_MAPPING[arrow.get_direction()]
 
+		var is_direction_input = false
+		for ui_action in DIRECTION_ACTION_MAPPING.values():
+			if event.is_action_pressed(ui_action):
+				is_direction_input = true
+				inputs_this_frame += 1
+
+		if inputs_this_frame > 1:
+			reset_arrows()
+			return
+
 		if event.is_action_pressed(required_input):
 			arrow.mark_done()
-			arrows_done.append(arrows.pop_front())
+			arrows_done.push_front(arrows.pop_front())
+		elif is_direction_input:
+			# wrong direction input
+			reset_arrows()
 
 
