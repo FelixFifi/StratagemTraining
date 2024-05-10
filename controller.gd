@@ -1,6 +1,6 @@
 extends Node2D
 
-const DIRECTION_ACTION_MAPPING = {
+var DIRECTION_ACTION_MAPPING = {
 	Arrow.EArrowDirection.UP: "ui_up",
 	Arrow.EArrowDirection.RIGHT: "ui_right",
 	Arrow.EArrowDirection.DOWN: "ui_down",

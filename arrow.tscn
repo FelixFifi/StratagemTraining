@@ -3,24 +3,14 @@
 [ext_resource type="Script" path="res://arrow.gd" id="1_er1lg"]
 [ext_resource type="Texture2D" uid="uid://bqsvyar4ceudg" path="res://textures/texture_arrow_right.tres" id="2_q4a72"]
 
-[node name="Arrow" type="Control"]
-custom_minimum_size = Vector2(42, 58)
-layout_mode = 3
-anchors_preset = 0
-offset_left = -21.0
-offset_top = -29.0
-offset_right = 21.0
-offset_bottom = 29.0
-pivot_offset = Vector2(21, 29)
-script = ExtResource("1_er1lg")
-
-[node name="ArrowUp_Texture" type="TextureRect" parent="."]
+[node name="ArrowUp_Texture" type="TextureRect"]
 custom_minimum_size = Vector2(58, 42)
-layout_mode = 1
 offset_left = -8.0
 offset_top = 8.0
 offset_right = 50.0
 offset_bottom = 50.0
 rotation = -1.5708
 pivot_offset = Vector2(29, 21)
+size_flags_vertical = 4
 texture = ExtResource("2_q4a72")
+script = ExtResource("1_er1lg")
