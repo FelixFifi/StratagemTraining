@@ -33,7 +33,7 @@ func reset():
 	waiting_for_next_sequences = false
 
 
-func _process(delta):
+func _process(_delta):
 	if waiting_for_next_sequences:
 		if success_timer.time_left == 0:
 			reset()
