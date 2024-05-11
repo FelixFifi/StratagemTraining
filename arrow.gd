@@ -8,6 +8,8 @@ enum EArrowDirection {
 	LEFT = 180,
 }
 
+const POSSIBLE_DIRECTIONS = [EArrowDirection.UP, EArrowDirection.RIGHT, EArrowDirection.DOWN, EArrowDirection.LEFT]
+
 const TEXTURE_MAPPING = {
 	"todo": {
 		EArrowDirection.UP: "res://textures/texture_arrow_up.tres",

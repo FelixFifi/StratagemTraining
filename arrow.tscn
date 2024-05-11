@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://arrow.gd" id="1_er1lg"]
 [ext_resource type="Texture2D" uid="uid://bqsvyar4ceudg" path="res://textures/texture_arrow_right.tres" id="2_q4a72"]
 
-[node name="ArrowUp_Texture" type="TextureRect"]
+[node name="Arrow_Texture" type="TextureRect"]
 custom_minimum_size = Vector2(58, 42)
 offset_left = -8.0
 offset_top = 8.0
