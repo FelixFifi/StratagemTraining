@@ -11,15 +11,44 @@ var sequence_scene = load("res://sequence.tscn")
 @onready var sequence_container = %SequenceContainer
 var sequences: Array[Sequence] = []
 
+@onready var success_timer = %SuccessTimer
+var waiting_for_next_sequences = false
+
 func _ready():
+	reset()
+
+func reset():
+	for sequence in sequences:
+		sequence.queue_free()
+
+	sequences.clear()
+
 	for i in range(4):
 		var sequence: Sequence = sequence_scene.instantiate()
 		sequence.generate_arrows(5)
 		sequences.append(sequence)
 		sequence_container.add_child(sequence)
 
+	success_timer.stop()
+	waiting_for_next_sequences = false
+
+
+func _process(delta):
+	if waiting_for_next_sequences:
+		if success_timer.time_left == 0:
+			reset()
+	else:
+		for sequence in sequences:
+			if sequence.is_completed():
+				success_timer.start()
+				waiting_for_next_sequences = true
+				return
+
 
 func _unhandled_key_input(event):
+	if waiting_for_next_sequences:
+		return
+
 	if event.is_action_pressed("strategem_reset"):
 		for sequence in sequences:
 			sequence.reset()
