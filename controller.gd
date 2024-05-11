@@ -14,13 +14,9 @@ var sequences: Array[Sequence] = []
 func _ready():
 	for i in range(4):
 		var sequence: Sequence = sequence_scene.instantiate()
-		sequence.generate_arrows(10)
+		sequence.generate_arrows(5)
 		sequences.append(sequence)
 		sequence_container.add_child(sequence)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _unhandled_key_input(event):

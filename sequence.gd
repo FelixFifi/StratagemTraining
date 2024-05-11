@@ -13,16 +13,22 @@ func process_input(direction_input: Arrow.EArrowDirection):
 	if failed:
 		return
 
-	if len(arrows) > 0:
-		var arrow = arrows[0]
+	if len(arrows) == 0:
+		return
 
-		var required_input = arrow.get_direction()
-		if required_input == direction_input:
-			arrow.mark_done()
-			arrows_done.push_front(arrows.pop_front())
-		else:
-			# wrong direction input
-			fail()
+	var arrow = arrows[0]
+
+	var required_input = arrow.get_direction()
+	if required_input == direction_input:
+		arrow.mark_done()
+		arrows_done.push_front(arrows.pop_front())
+	else:
+		# wrong direction input
+		fail()
+
+	if len(arrows) == 0:
+		complete()
+
 
 func generate_arrows(n: int):
 	for i in range(n):
@@ -44,6 +50,9 @@ func reset():
 func fail():
 	failed = true
 	modulate = Color(0.5, 0.5, 0.5)
+
+func complete():
+	modulate = Color(0.8, 1, 0.8)
 
 func is_completed():
 	return not failed and len(arrows) == 0
