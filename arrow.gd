@@ -26,7 +26,7 @@ const TEXTURE_MAPPING = {
 }
 
 
-@export var arrow_direction: EArrowDirection = EArrowDirection.UP
+var arrow_direction: EArrowDirection = EArrowDirection.UP
 
 
 func set_direction(direction: EArrowDirection):

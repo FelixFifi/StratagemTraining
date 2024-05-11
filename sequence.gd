@@ -1,7 +1,5 @@
-extends HBoxContainer
+extends VBoxContainer
 class_name Sequence
-
-
 
 var arrows: Array[Arrow] = []
 var arrows_done: Array[Arrow] = []
@@ -30,12 +28,20 @@ func process_input(direction_input: Arrow.EArrowDirection):
 		complete()
 
 
+func load_stratagem(directions: Array[Arrow.EArrowDirection], stratagem_name):
+	$Name.text = stratagem_name
+	for direction in directions:
+		var arrow: Arrow = arrow_scene.instantiate()
+		arrow.set_direction(direction)
+		$Sequence.add_child(arrow)
+		arrows.append(arrow)
+
 func generate_arrows(n: int):
 	for i in range(n):
 		var arrow: Arrow = arrow_scene.instantiate()
 		var direction : Arrow.EArrowDirection = Arrow.POSSIBLE_DIRECTIONS.pick_random()
 		arrow.set_direction(direction)
-		add_child(arrow)
+		$Sequence.add_child(arrow)
 		arrows.append(arrow)
 
 func reset():
@@ -45,14 +51,14 @@ func reset():
 
 	arrows_done.clear()
 	failed = false
-	modulate = Color(1, 1, 1)
+	$Sequence.modulate = Color(1, 1, 1)
 
 func fail():
 	failed = true
-	modulate = Color(0.5, 0.5, 0.5)
+	$Sequence.modulate = Color(0.5, 0.5, 0.5)
 
 func complete():
-	modulate = Color(0.8, 1, 0.8)
+	$Sequence.modulate = Color(0.8, 1, 0.8)
 
 func is_completed():
 	return not failed and len(arrows) == 0

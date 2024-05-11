@@ -7,7 +7,7 @@ var DIRECTION_ACTION_MAPPING = {
 	Arrow.EArrowDirection.LEFT: "strategem_left",
 }
 
-var sequence_scene = load("res://sequence.tscn")
+static var sequence_scene = load("res://sequence.tscn")
 @onready var sequence_container = %SequenceContainer
 var sequences: Array[Sequence] = []
 
@@ -24,8 +24,7 @@ func reset():
 	sequences.clear()
 
 	for i in range(4):
-		var sequence: Sequence = sequence_scene.instantiate()
-		sequence.generate_arrows(5)
+		var sequence: Sequence = Stratagems.get_random_stratagem()
 		sequences.append(sequence)
 		sequence_container.add_child(sequence)
 
