@@ -1,13 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh6vkvdmrkkvs"]
+[gd_scene load_steps=3 format=3 uid="uid://bh6vkvdmrkkvs"]
 
 [ext_resource type="Script" path="res://sequence.gd" id="1_rshwg"]
+[ext_resource type="Texture2D" uid="uid://bkqy18ydmjqf6" path="res://icon.svg" id="2_8k4hp"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
-offset_bottom = 648.0
+offset_right = 996.0
+offset_bottom = 257.0
 script = ExtResource("1_rshwg")
 
 [node name="Name" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Sequence" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Sequence"]
+layout_mode = 2
+texture = ExtResource("2_8k4hp")
+expand_mode = 2

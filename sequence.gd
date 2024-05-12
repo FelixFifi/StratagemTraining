@@ -3,6 +3,7 @@ class_name Sequence
 
 var arrows: Array[Arrow] = []
 var arrows_done: Array[Arrow] = []
+var stratagem: Stratagem
 
 var arrow_scene = load("res://arrow.tscn")
 var failed = false
@@ -28,12 +29,13 @@ func process_input(direction_input: Arrow.EArrowDirection):
 		complete()
 
 
-func load_stratagem(directions: Array[Arrow.EArrowDirection], stratagem_name):
-	$Name.text = stratagem_name
-	for direction in directions:
+func load_stratagem(stratagem: Stratagem):
+	self.stratagem = stratagem
+	%Name.text = stratagem.stratagem_name
+	for direction in stratagem.directions:
 		var arrow: Arrow = arrow_scene.instantiate()
 		arrow.set_direction(direction)
-		$Sequence.add_child(arrow)
+		%Sequence.add_child(arrow)
 		arrows.append(arrow)
 
 func generate_arrows(n: int):
@@ -41,7 +43,7 @@ func generate_arrows(n: int):
 		var arrow: Arrow = arrow_scene.instantiate()
 		var direction : Arrow.EArrowDirection = Arrow.POSSIBLE_DIRECTIONS.pick_random()
 		arrow.set_direction(direction)
-		$Sequence.add_child(arrow)
+		%Sequence.add_child(arrow)
 		arrows.append(arrow)
 
 func reset():
@@ -51,14 +53,18 @@ func reset():
 
 	arrows_done.clear()
 	failed = false
-	$Sequence.modulate = Color(1, 1, 1)
+	%Sequence.modulate = Color(1, 1, 1)
+
+func fail_not_solution():
+	failed = true
+	%Sequence.modulate = Color(1, 0.5, 0.5)
 
 func fail():
 	failed = true
-	$Sequence.modulate = Color(0.5, 0.5, 0.5)
+	%Sequence.modulate = Color(0.5, 0.5, 0.5)
 
 func complete():
-	$Sequence.modulate = Color(0.8, 1, 0.8)
+	%Sequence.modulate = Color(0.8, 1, 0.8)
 
 func is_completed():
 	return not failed and len(arrows) == 0
