@@ -12,7 +12,7 @@ static var EAGLE_STRATAGEMS: Array[Stratagem] = [
 	Stratagem.new("Eagle 500kg Bomb", "URDDD", [Traits.ETraits.explosive_large]),
 ]
 
-static var ORBITAL_STRATAGMES: Array[Stratagem] = [
+static var ORBITAL_STRATAGEMS: Array[Stratagem] = [
 	Stratagem.new("Orbital Gatling Barrage", "RDLUU", [Traits.ETraits.area_low_damage]),
 	Stratagem.new("Orbital Airburst Strike", "RRR", [Traits.ETraits.area_low_damage]),
 	Stratagem.new("Orbital 120MM HE Barrage", "RRDLRD", [Traits.ETraits.explosive_multiple]),
@@ -26,8 +26,17 @@ static var ORBITAL_STRATAGMES: Array[Stratagem] = [
 	Stratagem.new("Orbital Smoke Strike", "RRDU", [Traits.ETraits.blocks_sight]),
 ]
 
+static var BACKPACK_STRATAGEMS: Array[Stratagem] = [
+	Stratagem.new("LIFT-850 Jump Pack", "DUUDU", [Traits.ETraits.escape]),
+	Stratagem.new("B-1 Supply Pack", "DLDUUD", [Traits.ETraits.supply]),
+	Stratagem.new("AX/LAS-5 'Guard Dog' Rover", "DULURR", [Traits.ETraits.guard_dog]),
+	Stratagem.new("SH-20 Ballistic Shield Backpack", "DLDDUL", [Traits.ETraits.shield]),
+	Stratagem.new("SH-32 Shield Generator Pack", "DULRLR", [Traits.ETraits.shield]),
+	Stratagem.new("AX/AR-23 'Guard Dog'", "DUUDU", [Traits.ETraits.guard_dog]),
+]
+
 # TODO: add all stratagem types
-static var ALL_STRATAGEMS: Array[Stratagem] = EAGLE_STRATAGEMS + ORBITAL_STRATAGMES
+static var ALL_STRATAGEMS: Array[Stratagem] = EAGLE_STRATAGEMS + ORBITAL_STRATAGEMS + BACKPACK_STRATAGEMS
 
 static var sequence_scene = load("res://sequence.tscn")
 

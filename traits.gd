@@ -13,4 +13,9 @@ enum ETraits {
 	paralyze,
 	exact_target,
 	high_damage,
+	escape,
+	shield,
+	supply,
+	guard_dog,
+
 }
