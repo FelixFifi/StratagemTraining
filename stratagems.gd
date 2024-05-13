@@ -1,30 +1,32 @@
 extends Node
 class_name Stratagems
 
+# TODO: Add more traits
 static var EAGLE_STRATAGEMS: Array[Stratagem] = [
-	Stratagem.new("Eagle Strafing Run", "URR", [Situation.ETraits.area_low_damage]),
-	Stratagem.new("Eagle Airstrike", "URDR", [Situation.ETraits.explosive_multiple]),
-	Stratagem.new("Eagle Cluster Bomb", "URDDR", [Situation.ETraits.explosive_multiple]),
-	Stratagem.new("Eagle Napalm Airstrike", "URDU", [Situation.ETraits.area_low_damage]),
-	Stratagem.new("Eagle Smoke Strike", "URUD"),
-	Stratagem.new("Eagle 10MM Rocket Pods", "URUL"),
-	Stratagem.new("Eagle 500kg Bomb", "URDDD", [Situation.ETraits.explosive_large]),
+	Stratagem.new("Eagle Strafing Run", "URR", [Traits.ETraits.area_low_damage]),
+	Stratagem.new("Eagle Airstrike", "URDR", [Traits.ETraits.explosive_multiple]),
+	Stratagem.new("Eagle Cluster Bomb", "URDDR", [Traits.ETraits.explosive_multiple]),
+	Stratagem.new("Eagle Napalm Airstrike", "URDU", [Traits.ETraits.area_low_damage]),
+	Stratagem.new("Eagle Smoke Strike", "URUD", [Traits.ETraits.blocks_sight]),
+	Stratagem.new("Eagle 10MM Rocket Pods", "URUL", [Traits.ETraits.explosive, Traits.ETraits.exact_target]),
+	Stratagem.new("Eagle 500kg Bomb", "URDDD", [Traits.ETraits.explosive_large]),
 ]
 
 static var ORBITAL_STRATAGMES: Array[Stratagem] = [
-	Stratagem.new("Orbital Gatling Barrage", "RDLUU", [Situation.ETraits.area_low_damage]),
-	Stratagem.new("Orbital Airburst Strike", "RRR", [Situation.ETraits.area_low_damage]),
-	Stratagem.new("Orbital 120MM HE Barrage", "RRDLRD"),
-	Stratagem.new("Orbital 380MM HE Barrage", "RDUULDD"),
-	Stratagem.new("Orbital Walking Barrage", "RDRDRD"),
-	Stratagem.new("Orbital Laser", "RDURD"),
-	Stratagem.new("Orbital Railcannon Strike", "RUDDR"),
-	Stratagem.new("Orbital Precision Strike", "RRU", [Situation.ETraits.explosive]),
-	Stratagem.new("Orbital Gas Strike", "RRDR", [Situation.ETraits.area_low_damage]),
-	Stratagem.new("Orbital EMS Strike", "RRLD"),
-	Stratagem.new("Orbital Smoke Strike", "RRDU"),
+	Stratagem.new("Orbital Gatling Barrage", "RDLUU", [Traits.ETraits.area_low_damage]),
+	Stratagem.new("Orbital Airburst Strike", "RRR", [Traits.ETraits.area_low_damage]),
+	Stratagem.new("Orbital 120MM HE Barrage", "RRDLRD", [Traits.ETraits.explosive_multiple]),
+	Stratagem.new("Orbital 380MM HE Barrage", "RDUULDD", [Traits.ETraits.explosive_multiple]),
+	Stratagem.new("Orbital Walking Barrage", "RDRDRD", [Traits.ETraits.explosive_multiple]),
+	Stratagem.new("Orbital Laser", "RDURD", [Traits.ETraits.high_damage]),
+	Stratagem.new("Orbital Railcannon Strike", "RUDDR", [Traits.ETraits.high_damage, Traits.ETraits.exact_target]),
+	Stratagem.new("Orbital Precision Strike", "RRU", [Traits.ETraits.explosive, Traits.ETraits.exact_target]),
+	Stratagem.new("Orbital Gas Strike", "RRDR", [Traits.ETraits.area_low_damage]),
+	Stratagem.new("Orbital EMS Strike", "RRLD", [Traits.ETraits.paralyze]),
+	Stratagem.new("Orbital Smoke Strike", "RRDU", [Traits.ETraits.blocks_sight]),
 ]
 
+# TODO: add all stratagem types
 static var ALL_STRATAGEMS: Array[Stratagem] = EAGLE_STRATAGEMS + ORBITAL_STRATAGMES
 
 static var sequence_scene = load("res://sequence.tscn")

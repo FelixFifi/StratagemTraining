@@ -3,7 +3,7 @@ class_name Stratagem
 
 var stratagem_name: String
 var directions: Array[Arrow.EArrowDirection]
-var traits: Array[Situation.ETraits]
+var traits: Array[Traits.ETraits]
 
 const CHAR_DIRECTION_MAPPING = {
 	"U": Arrow.EArrowDirection.UP,
@@ -13,7 +13,7 @@ const CHAR_DIRECTION_MAPPING = {
 }
 
 
-func _init(stratagem_name: String, direction_code:  String, traits: Array[Situation.ETraits] = []):
+func _init(stratagem_name: String, direction_code:  String, traits: Array[Traits.ETraits] = []):
 	self.stratagem_name = stratagem_name
 	self.traits = traits
 	self.directions = direction_code_to_directions(direction_code)
